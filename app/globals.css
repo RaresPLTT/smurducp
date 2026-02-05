@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --accent: #E53E3E;
+  --accent-dark: #C53030;
+  --accent-light: #FC8181;
+  --bg-primary: #0A0A0B;
+  --bg-secondary: #111113;
+  --bg-tertiary: #1A1A1D;
+  --bg-card: rgba(26, 26, 29, 0.6);
+  --border: rgba(229, 62, 62, 0.2);
+  --text-primary: #FFFFFF;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+.font-display {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--border);
+  box-shadow: 0 0 40px rgba(229, 62, 62, 0.1);
+}
+
+.glow-text {
+  text-shadow: 0 0 20px rgba(229, 62, 62, 0.5);
+}
+
+.accent-gradient {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 50%, var(--accent-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(229, 62, 62, 0.4); }
+  50% { box-shadow: 0 0 40px rgba(229, 62, 62, 0.6); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(229, 62, 62, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(229, 62, 62, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+
+.rank-badge {
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rank-director-general {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #000;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+.rank-director-adjunct {
+  background: linear-gradient(135deg, #C0C0C0, #A0A0A0);
+  color: #000;
+  box-shadow: 0 0 20px rgba(192, 192, 192, 0.4);
+}
+
+.rank-medic-primar {
+  background: linear-gradient(135deg, #E53E3E, #C53030);
+  color: #FFF;
+  box-shadow: 0 0 20px rgba(229, 62, 62, 0.4);
+}
+
+.rank-medic-chirurg {
+  background: linear-gradient(135deg, #38A169, #276749);
+  color: #FFF;
+  box-shadow: 0 0 20px rgba(56, 161, 105, 0.4);
+}
+
+.rank-medic-rezident {
+  background: linear-gradient(135deg, #3182CE, #2B6CB0);
+  color: #FFF;
+  box-shadow: 0 0 20px rgba(49, 130, 206, 0.4);
+}
+
+.rank-asistent {
+  background: linear-gradient(135deg, #805AD5, #6B46C1);
+  color: #FFF;
+  box-shadow: 0 0 20px rgba(128, 90, 213, 0.4);
+}
+
+.rank-paramedic {
+  background: linear-gradient(135deg, #DD6B20, #C05621);
+  color: #FFF;
+  box-shadow: 0 0 20px rgba(221, 107, 32, 0.4);
+}
+
+.rank-stagiar {
+  background: linear-gradient(135deg, #4A5568, #2D3748);
+  color: #FFF;
+  box-shadow: 0 0 20px rgba(74, 85, 104, 0.4);
+}

@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Rank {
+  DIRECTOR_GENERAL
+  DIRECTOR_ADJUNCT
+  MEDIC_PRIMAR
+  MEDIC_CHIRURG
+  MEDIC_REZIDENT
+  ASISTENT
+  PARAMEDIC
+  STAGIAR
+}
+
+model Member {
+  id          Int      @id @default(autoincrement())
+  nameIC      String   @map("name_ic")
+  cnp         String   @unique
+  discordId   String   @unique @map("discord_id")
+  phoneNumber String   @map("phone_number")
+  rank        Rank     @default(STAGIAR)
+  callsign    String   @unique
+  avatarUrl   String?  @map("avatar_url")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("members")
+}
+
+model ActionLog {
+  id          Int      @id @default(autoincrement())
+  actionType  String   @map("action_type")
+  targetId    Int      @map("target_id")
+  performedBy Int      @map("performed_by")
+  reason      String?  @db.Text
+  oldRank     Rank?    @map("old_rank")
+  newRank     Rank?    @map("new_rank")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("action_logs")
+}
